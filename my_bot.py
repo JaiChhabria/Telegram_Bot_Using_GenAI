@@ -5,13 +5,13 @@ import logging
 import openai
 
 load_dotenv()
-TOKEN = os.getenv('TOKEN')
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+TOKEN = os.getenv("TOKEN")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-# connect with OpenAI
+# Connect with OpenAI
 openai.api_key = OPENAI_API_KEY
 
-#print("ok")
+# print("Ok")
 
 MODEL_NAME = "gpt-3.5-turbo"
 
@@ -92,12 +92,3 @@ async def main_bot(message: types.Message):
     reference.response = response['choices'][0]['message']['content']
     print(f">>> chatGPT: \n\t{reference.response}")
     await bot.send_message(chat_id = message.chat.id, text = reference.response)
-    
-    
-
-
-
-
-
-if __name__ == "__main__":
-    executor.start_polling(dispatcher, skip_updates=True)
